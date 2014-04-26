@@ -17,18 +17,17 @@
   ;(utils/log time-delta)
   )
 
+(defn timestamp-delta [old new]
+  (if old (- new old) 0))
 
-(def last-timestamp nil)
-(defn tick [timestamp]
-  (let [delta (if last-timestamp (- timestamp last-timestamp) 0)]
-    (set! last-timestamp timestamp)
-    (update delta)
-    (utils/request-next-frame tick)))
+(defn tick [last-timestamp timestamp]
+  (update (timestamp-delta last-timestamp timestamp))
+  (utils/request-next-frame (partial tick timestamp)))
 
 (defn initialize []
   (let [context (create-context)]
     (clear-context context)
     (utils/log context)
-    (utils/request-next-frame tick)))
+    (utils/request-next-frame (partial tick nil))))
 
 (utils/domready initialize)
