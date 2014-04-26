@@ -1,4 +1,5 @@
-(ns retry.render)
+(ns retry.render
+  (:require [retry.js-utils :as utils]))
 
 (defn create-context []
   (let [canvas (.createElement js/document "canvas")
@@ -11,3 +12,7 @@
 (defn clear-context [context]
   (set! (. context -fillStyle) "#ECECEC")
   (.fillRect js/context 0 0 800 600))
+
+(defn draw-player [context player]
+  ;(utils/log player)
+  )
