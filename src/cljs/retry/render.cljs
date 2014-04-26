@@ -17,8 +17,8 @@
   (.fillRect js/context 0 0 width height))
 
 (defn draw-player [context player]
-  (let [x (:x player)
-        y (:y player)]
+  (let [x (first (:position player))
+        y (last (:position player))]
     (set! (. context -fillStyle) "#FFF")
     (. context beginPath)
     (. context moveTo (- x 10) (- y 10))
