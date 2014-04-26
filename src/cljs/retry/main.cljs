@@ -13,9 +13,22 @@
   (set! (. context -fillStyle) "#ECECEC")
   (.fillRect js/context 0 0 800 600))
 
-(defn run []
+(defn update [time-delta]
+  ;(utils/log time-delta)
+  )
+
+
+(def last-timestamp nil)
+(defn tick [timestamp]
+  (let [delta (if last-timestamp (- timestamp last-timestamp) 0)]
+    (set! last-timestamp timestamp)
+    (update delta)
+    (utils/request-next-frame tick)))
+
+(defn initialize []
   (let [context (create-context)]
     (clear-context context)
-    (utils/log context)))
+    (utils/log context)
+    (utils/request-next-frame tick)))
 
-(utils/domready run)
+(utils/domready initialize)

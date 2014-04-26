@@ -5,3 +5,6 @@
 
 (defn domready [handler]
   (.addEventListener js/window "DOMContentLoaded" handler))
+
+(defn request-next-frame [handler]
+  (.requestAnimationFrame js/window handler))
