@@ -1,17 +1,6 @@
 (ns retry.main
-  (:require [retry.js-utils :as utils]))
-
-(defn create-context []
-  (let [canvas (.createElement js/document "canvas")
-        container (.querySelector js/document "body > .container")]
-    (set! (. canvas -width) 800)
-    (set! (. canvas -height) 600)
-    (.appendChild js/container canvas)
-    (.getContext canvas "2d")))
-
-(defn clear-context [context]
-  (set! (. context -fillStyle) "#ECECEC")
-  (.fillRect js/context 0 0 800 600))
+  (:require [retry.js-utils :as utils]
+            [retry.render :as render]))
 
 (defn update [time-delta]
   ;(utils/log time-delta)
@@ -25,8 +14,8 @@
   (utils/request-next-frame (partial tick timestamp)))
 
 (defn initialize []
-  (let [context (create-context)]
-    (clear-context context)
+  (let [context (render/create-context)]
+    (render/clear-context context)
     (utils/log context)
     (utils/request-next-frame (partial tick nil))))
 
