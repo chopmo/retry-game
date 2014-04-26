@@ -11,7 +11,7 @@
 
 (defn build-world []
   {
-   :player { :x 100 :y 300 }
+   :player { :x 50 :y 200 }
    })
 
 (defn initialize []
