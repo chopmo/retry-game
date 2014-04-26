@@ -3,4 +3,12 @@
   :url "http://example.com/FIXME"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :dependencies [[org.clojure/clojure "1.5.1"]])
+  :source-paths ["src/clj" "src/cljs"]
+  :dependencies [[org.clojure/clojure "1.5.1"]
+                 [org.clojure/clojurescript "0.0-2069"]]
+  :plugins [[lein-cljsbuild "1.0.0"]]
+  :cljsbuild {:builds
+              [{:source-paths ["src/cljs"]
+                :compiler {:output-to "resources/public/js/retry.js"
+                           :optimizations :whitespace
+                           :pretty-print true}}]})
