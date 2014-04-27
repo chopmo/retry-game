@@ -27,3 +27,7 @@
     (. context lineTo (- x 5) y)
     (. context closePath)
     (. context fill)))
+
+(defn draw-world [context world]
+  (clear-context context)
+  (draw-player context (:player world)))

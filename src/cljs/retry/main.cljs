@@ -16,24 +16,27 @@
     (assoc world :player new-player)))
 
 (defn tick [world context last-timestamp timestamp]
-  (let [new-world (update-world world)]
-    (render/clear-context context)
-    (render/draw-player context (:player world))
-    (utils/request-next-frame (partial tick new-world context timestamp))))
+  (render/draw-world context world)
+  (utils/request-next-frame (partial tick
+                                     (update-world world)
+                                     context
+                                     timestamp)))
 
 (defn build-world []
   {
    :player {
             :position [50 200]
-            :velocity [0 0]
-            :acceleration [0.1 0]
+            :velocity [0.2 0]
+            :acceleration [0 0]
             }
    })
 
 (defn initialize []
   (let [context (render/create-context)
         world (build-world)]
-    (render/clear-context context)
-    (utils/request-next-frame (partial tick world context nil))))
+    (utils/request-next-frame (partial tick
+                                       world
+                                       context
+                                       nil))))
 
 (utils/domready initialize)
