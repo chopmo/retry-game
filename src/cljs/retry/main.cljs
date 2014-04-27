@@ -1,7 +1,8 @@
 (ns retry.main
   (:require [retry.js-utils :as utils]
             [retry.render :as render]
-            [retry.physics :as phy]))
+            [retry.physics :as phy]
+            [retry.keyboard :as key]))
 
 (defn timestamp-delta [old new]
   (if old (- new old) 0))
@@ -26,14 +27,19 @@
   {
    :player {
             :position [50 200]
-            :velocity [0.2 0]
+            :velocity [0 0]
             :acceleration [0 0]
             }
+   
+   :controls {
+              :thrust 0
+              }
    })
 
 (defn initialize []
   (let [context (render/create-context)
         world (build-world)]
+    (key/init)
     (utils/request-next-frame (partial tick
                                        world
                                        context
