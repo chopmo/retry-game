@@ -18,15 +18,20 @@
 
 (defn draw-player [context player]
   (let [x (first (:position player))
-        y (last (:position player))]
+        y (last (:position player))
+        rotation (:rotation player)]
     (set! (. context -fillStyle) "#FFF")
+    (. context save)
+    (. context translate x y)
+    (. context rotate rotation)
     (. context beginPath)
-    (. context moveTo (- x 10) (- y 10))
-    (. context lineTo (+ x 30) y)
-    (. context lineTo (- x 10) (+ y 10))
-    (. context lineTo (- x 5) y)
+    (. context moveTo -15 -10)
+    (. context lineTo 15 0)
+    (. context lineTo -15 10)
+    (. context lineTo -5 0)
     (. context closePath)
-    (. context fill)))
+    (. context fill)
+    (. context restore)))
 
 (defn draw-world [context world]
   (clear-context context)

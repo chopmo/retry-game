@@ -2,13 +2,15 @@
   (:require [retry.js-utils :as utils]
             [retry.render :as render]
             [retry.physics :as phy]
-            [retry.keyboard :as key]))
+            [retry.keyboard :as key]
+            [retry.controls :as controls]))
 
 (defn timestamp-delta [old new]
   (if old (- new old) 0))
 
 (defn update-player [player]
   (-> player
+      (controls/update-player key/pressed-keys)
       phy/accelerate
       phy/drag
       phy/move))
@@ -28,13 +30,10 @@
   {
    :player {
             :position [50 200]
-            :velocity [3 0]
+            :velocity [0 0]
             :acceleration [0 0]
+            :rotation 0
             }
-   
-   :controls {
-              :thrust 0
-              }
    })
 
 (defn initialize []
