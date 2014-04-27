@@ -10,17 +10,22 @@
       (controls/update-player key/pressed-keys)
       phy/update-object))
 
-(defn update-world [world]
+(defn advance-world [world]
   (let [new-player (update-player (:player world))]
     (assoc world :player new-player)))
 
 (defn add-world [worlds next-world]
   (conj worlds next-world))
 
+(defn rewind-worlds [worlds]
+  (if (> (count worlds) 2)
+    (apply vector (drop-last 2 worlds))
+    worlds))
+
 (defn update-worlds [worlds]
   (if (:space key/pressed-keys)
-    (drop-last worlds)
-    (add-world worlds (update-world (last worlds)))))
+    (rewind-worlds worlds)
+    (add-world worlds (advance-world (last worlds)))))
 
 (defn tick [worlds context _timestamp]
   (let [current-world (last worlds)
