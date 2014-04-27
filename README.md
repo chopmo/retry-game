@@ -6,10 +6,10 @@ Try it here: http://diva.chopmo.dk/retry/resources/public/
 
 # Controls
 
-   W: Thrust
-   A: Rotate left
-   D: Rotate right
-   SPACE: Rewind time
+* W: Thrust
+* A: Rotate left
+* D: Rotate right
+* SPACE: Rewind time
 
 # Original idea notes
 
