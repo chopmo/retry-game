@@ -1,15 +1,18 @@
 (ns retry.controls
-  (:require [retry.js-utils :as utils]))
+  (:require [retry.js-utils :as utils]
+            [retry.vectors :as vec]))
 
-(defn update-rotation [player keys]
+(defn rotate [player keys]
   (let [modifier (cond (:a keys) -0.1 (:d keys) 0.1 true 0)]
     (assoc player :rotation (+ modifier (:rotation player)))))
 
-(defn update-acceleration [player keys]
-  (let [new-acceleration (if (:w keys) [0.3 0] [0 0])]
+(defn accelerate [player keys]
+  (let [amount (if (:w keys) 0.3 0)
+        direction (vec/direction (:rotation player))
+        new-acceleration (vec/mul direction amount)]
     (assoc player :acceleration new-acceleration)))
 
 (defn update-player [player keys]
   (-> player
-      (update-rotation keys)
-      (update-acceleration keys)))
+      (rotate keys)
+      (accelerate keys)))
