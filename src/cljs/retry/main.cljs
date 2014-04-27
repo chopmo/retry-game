@@ -1,18 +1,15 @@
 (ns retry.main
   (:require [retry.js-utils :as utils]
             [retry.render :as render]
-            [retry.vectors :as vec]))
+            [retry.physics :as phy]))
 
 (defn timestamp-delta [old new]
   (if old (- new old) 0))
 
 (defn update-player [player]
-  (let [new-velocity (vec/add (:velocity player) (:acceleration player))
-        new-position (vec/add (:position player) new-velocity)]
-    ;; (utils/log (str player))
-    
-    (assoc player :velocity new-velocity
-                  :position new-position)))
+  (-> player
+      phy/accelerate
+      phy/move))
 
 (defn update-world [world]
   (let [new-player (update-player (:player world))]
@@ -29,7 +26,7 @@
    :player {
             :position [50 200]
             :velocity [0 0]
-            :acceleration [0 0]
+            :acceleration [0.1 0]
             }
    })
 
