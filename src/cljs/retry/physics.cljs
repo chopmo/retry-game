@@ -12,3 +12,9 @@
 (defn drag [obj]
   (let [new-velocity (vec/mul (:velocity obj) 0.98)]
     (assoc obj :velocity new-velocity)))
+
+(defn update-object [obj]
+  (-> obj
+      accelerate
+      drag
+      move))

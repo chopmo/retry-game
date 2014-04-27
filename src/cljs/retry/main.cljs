@@ -11,9 +11,7 @@
 (defn update-player [player]
   (-> player
       (controls/update-player key/pressed-keys)
-      phy/accelerate
-      phy/drag
-      phy/move))
+      phy/update-object))
 
 (defn update-world [world]
   (let [new-player (update-player (:player world))]
