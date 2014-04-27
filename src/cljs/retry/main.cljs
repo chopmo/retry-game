@@ -10,6 +10,7 @@
 (defn update-player [player]
   (-> player
       phy/accelerate
+      phy/drag
       phy/move))
 
 (defn update-world [world]
@@ -27,7 +28,7 @@
   {
    :player {
             :position [50 200]
-            :velocity [0 0]
+            :velocity [3 0]
             :acceleration [0 0]
             }
    
