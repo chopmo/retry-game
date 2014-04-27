@@ -1,0 +1,1 @@
+tar cv * | ssh jtj@diva.chopmo.dk "tar x -C /var/www/root/retry"
