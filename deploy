@@ -1,1 +1,6 @@
-tar cv * | ssh jtj@diva.chopmo.dk "tar x -C /var/www/root/retry"
+ssh chopmo@matilde.club "mkdir -p ~/public_html/retry"
+
+scp README.md chopmo@matilde.club:public_html/retry
+
+cd resources/public
+tar cv * | ssh chopmo@matilde.club "tar x -C ~/public_html/retry"
