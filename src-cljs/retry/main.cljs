@@ -45,7 +45,7 @@
             }
    })
 
-(defn initialize []
+(defn ^:export initialize []
   (let [context (render/create-context)
         initial-world (build-world)]
     (key/init)
@@ -53,5 +53,3 @@
                                        [initial-world]
                                        context
                                        nil))))
-
-(utils/domready initialize)

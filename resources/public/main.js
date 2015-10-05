@@ -36287,7 +36287,7 @@ retry.main.initialize = function initialize() {
   retry.keyboard.init.call(null);
   return retry.js_utils.request_next_frame.call(null, cljs.core.partial.call(null, retry.main.tick, new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [initial_world], null), context, null));
 };
-retry.js_utils.domready.call(null, retry.main.initialize);
+goog.exportSymbol("retry.main.initialize", retry.main.initialize);
 goog.provide("goog.net.xpc.IframeRelayTransport");
 goog.require("goog.dom");
 goog.require("goog.dom.safe");
