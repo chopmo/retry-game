@@ -2,8 +2,6 @@
 
 About a quarter of a game, implemented in ClojureScript. 
 
-Try it here: http://diva.chopmo.dk/retry/resources/public/
-
 # Controls
 
 * W: Thrust
