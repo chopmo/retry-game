@@ -8,7 +8,7 @@ About a quarter of a game, implemented in ClojureScript.
 * A: Rotate left
 * D: Rotate right
 * SPACE: Rewind time
-ee
+
 # Original idea notes
 
 ## First iteration:
