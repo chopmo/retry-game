@@ -9,7 +9,7 @@ About a quarter of a game, implemented in ClojureScript.
 * D: Rotate right
 * SPACE: Rewind time
 
-# Original idea notes
+# Original idea notese
 
 ## First iteration:
 The playing field is on a single screen, no scrolling. The goal is to reach the right edge of the screen as fast as possible. The player is a triangle that starts at the left edge of the screen and can be controlled with three simple commands: Thrust, rotate left, rotate right. There are no obstacles and there is no gravity, but there is a drag effect that causes the player to gradually lose momentum. 
