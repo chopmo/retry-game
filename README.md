@@ -27,3 +27,5 @@ When the player dies, the world freezes but the stopwatch keeps running. The pla
 # Background
 
 I wrote this while sitting in with a group of people who competed in Ludum Dare 2014 here in Aarhus, Denmark. I never intended to submit to the competition myself, but this gave me a great opportunity to play around with ClojureScript and get my hands dirty with some functional programming. 
+
+
