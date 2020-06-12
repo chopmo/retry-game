@@ -16,7 +16,7 @@ The playing field is on a single screen, no scrolling. The goal is to reach the 
 
 ## Second iteration: 
 There are a number of simple, stationary obstacles in the game world which the player needs to do dodge on his way to the right edge of the screen. If the player hits an obstacle, he dies. A stopwatch is shown during gameplay, and the top 5 times are displayed, with initials. The player is prompted to enter initials (up to three letters) if he makes the highscore list. 
-
+e
 ## Third iteration: 
 When the player dies, the world freezes but the stopwatch keeps running. The player can hold the space bar to rewind time in 2x realtime. Play resumes when the space bar is released, so the player should rewind as little as possible while still giving himself enough time to dodge the obstacle that killed him. The goal is the same as before, to complete the course as quickly as possible, measured in wall clock time. 
 
